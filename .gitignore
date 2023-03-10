@@ -1,3 +1,6 @@
 
 node_modules
 package-lock.json
+settings.json
+database.sqlite
+sessions.db
