@@ -5,7 +5,7 @@
 const fs = require("fs");
 const fetch = require("node-fetch");
 const chalk = require("chalk");
-const arciotext = require("./backend/arcio.js").text;
+const arciotext = require("./backend/api/arcio.js").text;
 
 // Load settings.
 
@@ -66,7 +66,7 @@ module.exports.renderdataeval = `(async () => {
 
 // Load database
 
-const db = require("./db.js");
+const db = require("./backend/functions/db.js");
 
 module.exports.db = db;
 
@@ -86,7 +86,7 @@ const indexjs = require("./index.js");
 
 const sqlite = require("better-sqlite3");
 const SqliteStore = require("better-sqlite3-session-store")(session);
-const session_db = new sqlite("sessions.db");
+const session_db = new sqlite("./backend/database/sessions.db");
 
 // Load the website.
 
@@ -136,6 +136,8 @@ setInterval(async function () {
   if (cache - 0.1 < 0) return (cache = 0);
   cache = cache - 0.1;
 }, 100);
+
+//
 
 app.use(async (req, res, next) => {
   if (
@@ -228,11 +230,11 @@ app.use(async (req, res, next) => {
 // Load the API files.
 
 let apifiles = fs
-  .readdirSync("./backend")
+  .readdirSync("./backend/api")
   .filter((file) => file.endsWith(".js"));
 
 apifiles.forEach((file) => {
-  let apifile = require(`./backend/${file}`);
+  let apifile = require(`./backend/api/${file}`);
   apifile.load(app, db);
 });
 
@@ -260,7 +262,7 @@ app.all("*", async (req, res) => {
       );
   if (theme.settings.mustbeadmin.includes(req._parsedUrl.pathname)) {
     ejs.renderFile(
-      `./frontend/${theme.name}/${theme.settings.notfound}`,
+      `./frontend/pages/${theme.name}/${theme.settings.notfound}`,
       await eval(indexjs.renderdataeval),
       null,
       async function (err, str) {
@@ -328,7 +330,7 @@ app.all("*", async (req, res) => {
         }
 
         ejs.renderFile(
-          `./frontend/${theme.name}/${
+          `./frontend/pages/${theme.name}/${
             theme.settings.pages[req._parsedUrl.pathname.slice(1)]
               ? theme.settings.pages[req._parsedUrl.pathname.slice(1)]
               : theme.settings.notfound
@@ -356,7 +358,7 @@ app.all("*", async (req, res) => {
     return;
   }
   ejs.renderFile(
-    `./frontend/${theme.name}/${
+    `./frontend/pages/${theme.name}/${
       theme.settings.pages[req._parsedUrl.pathname.slice(1)]
         ? theme.settings.pages[req._parsedUrl.pathname.slice(1)]
         : theme.settings.notfound
@@ -389,13 +391,15 @@ module.exports.get = function (req) {
   ).defaulttheme;
   let tname = encodeURIComponent(getCookie(req, "theme"));
   let name = tname
-    ? fs.existsSync(`./frontend/${tname}`)
+    ? fs.existsSync(`./frontend/pages/${tname}`)
       ? tname
       : defaulttheme
     : defaulttheme;
   return {
-    settings: fs.existsSync(`./frontend/${name}/pages.json`)
-      ? JSON.parse(fs.readFileSync(`./frontend/${name}/pages.json`).toString())
+    settings: fs.existsSync(`./frontend/pages/${name}/pages.json`)
+      ? JSON.parse(
+          fs.readFileSync(`./frontend/pages/${name}/pages.json`).toString()
+        )
       : defaultthemesettings,
     name: name,
   };
@@ -408,6 +412,7 @@ module.exports.islimited = async function () {
 module.exports.ratelimits = async function (length) {
   cache = cache + length;
 };
+const newsettings = require("./settings");
 
 // Get a cookie.
 function getCookie(req, cname) {
