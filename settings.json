@@ -1,6 +1,6 @@
 {
   "version": "0.4.5",
-  "defaulttheme": "default",
+  "defaulttheme": "nice",
   "website": {
     "port": 80,
     "secret": "change this website session secret password, make sure to change this for your website's security"
