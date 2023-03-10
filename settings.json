@@ -13,7 +13,7 @@
   "api": {
     "client": {
        "api": {
-         "enabled": false,
+         "enabled": true,
          "code": "api token here, anyone who has access to this token can ran administrator settings"
        },
        "j4r": {
@@ -192,7 +192,7 @@
     },
     "arcio": {
       "_comment": "You can make an arc.io widget on https://arc.io. You can get money using arc.io.",
-      "enabled": false,
+      "enabled": true,
       "widgetid": "arc.io widget id here",
 
         "afk page": {
