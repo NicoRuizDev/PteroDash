@@ -1,6 +1,6 @@
 # PteroDash - The one and only all-in-one Dashboard.
 ## Under Development<br>
-**Docs:** `Coming Soon`<br>
+**Docs:** Coming Soon<br>
 **Discord:** https://discord.gg/5PdPSnT7TR
 
 <div align="center">
