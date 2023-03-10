@@ -1,4 +1,4 @@
 # PteroDash
-Under Development\n
-Docs: Coming Soon\n
+Under Development<br>
+Docs: Coming Soon<br>
 Discord: https://discord.gg/5PdPSnT7TR
