@@ -1,5 +1,4 @@
 const indexjs = require("../../index.js");
-const arciotext = require("./arcio.js").text;
 const ejs = require("ejs");
 const express = require("express");
 const settings = require("../../settings.json");

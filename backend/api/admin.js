@@ -9,7 +9,6 @@ if (settings.pterodactyl)
 const fetch = require("node-fetch");
 const fs = require("fs");
 const indexjs = require("../../index.js");
-const arciotext = require("./arcio.js").text;
 const adminjs = require("./admin.js");
 const ejs = require("ejs");
 const chalk = require("chalk");

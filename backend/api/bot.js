@@ -1,3 +1,3 @@
 module.exports.load = async function (app, db) {
-  require("../../bot").load(app, db);
+  require("../functions/bot.js").load(app, db);
 };

@@ -1,15 +1,20 @@
 "use strict";
+console.clear();
+const chalk = require("chalk");
+console.log(chalk.yellow("[PteroDash] Loading packages..."));
 
 // Load packages.
 
 const fs = require("fs");
 const fetch = require("node-fetch");
-const chalk = require("chalk");
-const arciotext = require("./backend/api/arcio.js").text;
+console.log(chalk.cyan("[PteroDash] Packages Loaded..."));
 
 // Load settings.
+console.log(chalk.yellow("[PteroDash] Loading settings..."));
 
 const settings = require("./settings.json");
+
+console.log(chalk.cyan("[PteroDash] Settings Loaded!"));
 
 const defaultthemesettings = {
   index: "index.ejs",
@@ -65,32 +70,42 @@ module.exports.renderdataeval = `(async () => {
   })();`;
 
 // Load database
+console.log(chalk.yellow("[PteroDash] Loading database..."));
 
 const db = require("./backend/functions/db.js");
 
 module.exports.db = db;
 
+console.log(chalk.cyan("[PteroDash] Loaded database!"));
+
 // Load websites.
+console.log(chalk.yellow("[PteroDash] Loading APIs..."));
 
 const express = require("express");
 const app = express();
 
-// Load express addons.
+console.log(chalk.cyan("[PteroDash] Loaded APIs!"));
 
+// Load express addons.
+console.log(chalk.yellow("[PteroDash] Loading Addons..."));
 const expressWs = require("express-ws")(app);
 const ejs = require("ejs");
 const session = require("express-session");
 const indexjs = require("./index.js");
+console.log(chalk.cyan("[PteroDash] Loaded Addons!"));
 
 // Sets up saving session data.
 
+console.log(chalk.yellow("[PteroDash] Loading session data..."));
 const sqlite = require("better-sqlite3");
 const SqliteStore = require("better-sqlite3-session-store")(session);
 const session_db = new sqlite("./backend/database/sessions.db");
+console.log(chalk.cyan("[PteroDash] Season data loaded!"));
 
 // Load the website.
 
 module.exports.app = app;
+console.log(chalk.yellow("[PteroDash] Starting up PteroDash..."));
 
 app.use(
   session({
@@ -117,11 +132,41 @@ app.use(
     verify: undefined,
   })
 );
+console.clear();
+console.log(
+  chalk.yellowBright(
+    "============================================================================="
+  )
+);
+console.log(
+  chalk.greenBright(
+    "PteroDash ©️ Links: [GitHub] https://github.com/NicoRuizDev/PteroDash"
+  )
+);
+console.log(
+  chalk.yellowBright(
+    "============================================================================="
+  )
+);
+console.log(
+  chalk.greenBright("Support Links: [Discord] https://discord.gg/5PdPSnT7TR")
+);
+console.log(
+  chalk.yellowBright(
+    "============================================================================="
+  )
+);
+console.log(chalk.greenBright("[Contributors] | BossByte#7269 | Nico  ♡#4888"));
+console.log(
+  chalk.yellowBright(
+    "============================================================================="
+  )
+);
 
 const listener = app.listen(settings.website.port, function () {
   console.log(
-    chalk.green(
-      "[WEBSITE] The dashboard has successfully loaded on port " +
+    chalk.greenBright(
+      "[WEBSITE] PteroDash has been successfully loaded on port " +
         listener.address().port +
         "."
     )

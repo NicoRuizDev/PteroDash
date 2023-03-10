@@ -1,5 +1,4 @@
 const indexjs = require("../../index.js");
-const arciotext = require("./arcio.js").text;
 const adminjs = require("./admin.js");
 const fs = require("fs");
 const newsettings = require("../../settings.json");
