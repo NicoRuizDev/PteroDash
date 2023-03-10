@@ -1,0 +1,150 @@
+{
+    "index": "index.ejs",
+    "notfound": "404.ejs",
+    "redirect": {
+        "callback": "/dashboard",
+        "failedcallback": "/",
+        "logout": "/",
+        "deleteserver": "/servers",
+        "updateservers": "/dashboard",
+        "createserver": "/servers",
+        "failedcreateserver": "/servers/new",
+        "modifyserver": "/servers",
+        "failedmodifyserver": "/servers/edit",
+        "setplan": "/admin",
+        "failedsetplan": "/admin",
+        "getip": "/admin",
+        "failedgetip": "/admin",
+        "createserverdisabled": "/servers?err=disabled",
+        "modifyserverdisabled": "/servers?err=disabled",
+        "deleteserverdisabled": "/servers?err=disabled",
+        "regenpassword": "/dashboard",
+        "setresources": "/admin",
+        "failedsetresources": "/admin",
+        "renewserver": "/servers",
+        "failedrenewserver": "/servers",
+        "setcoins": "/admin",
+        "failedsetcoins": "/admin",
+        "purchaseram": "/store",
+        "failedpurchaseram": "/store",
+        "purchasedisk": "/store",
+        "failedpurchasedisk": "/store",
+        "purchasecpu": "/store",
+        "failedpurchasecpu": "/store",
+        "purchaseservers": "/store",
+        "failedpurchaseservers": "/store",
+        "arcioerror": "/earn",
+        "missingorinvalidcouponcode": "/redeem",
+        "successfullyredeemedcoupon": "/redeem",
+        "couponcreationfailed": "/admin",
+        "couponcreationsuccess": "/admin",
+        "couponrevokefailed": "/admin",
+        "couponrevokesuccess": "/admin",
+        "removeaccountfailed": "/admin",
+        "removeaccountsuccess": "/admin"
+    },
+    "pages": {
+        "unverified": "unverified.ejs",
+        "dashboard": "dashboard.ejs",
+        "servers": "servers.ejs",
+        "servers/new": "create.ejs",
+        "servers/edit": "edit.ejs",
+        "admin": "admin.ejs",
+        "store": "store.ejs",
+        "earn": "earn.ejs",
+        "redeem": "redeem.ejs",
+        "join": "j4r.ejs",
+       "profile": "profile.ejs",
+       "359c0d867a1a3f5015db5accecf056a6.txt": "359c0d867a1a3f5015db5accecf056a6.txt"
+    },
+    "mustbeloggedin": [
+        "/dashboard",
+        "/servers",
+        "/servers/new",
+        "/servers/edit",
+        "/store",
+        "/earn",
+        "/profile",
+        "/redeem",
+        "https://discord.com/channels/1048554829104025670/1060058853980504094",
+        "/join"
+    ],
+    "mustbeadmin": [
+        "/admin"
+    ],
+    "generateafktoken": [
+        "/afk"
+    ],
+    "variables": {
+        "footerad": true,
+        "faviconlink": "https://camo.githubusercontent.com/d2e9b4ddcf7618efa123961ae270f7eaa83362f8/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3730363937303631373437313330333736312f3736383630363132323134373730383936382f707465726f64616374796c2d70616e656c2e706e67",
+        "name":"PteroDash",
+        "home": {
+            "title": "Home - PteroDash",
+            "buttontext": {
+                "loggedin": {
+                    "text": "Dashboard",
+                    "link": "/dashboard"
+                },
+                "loggedout": {
+                    "_note": "This below supports HTML encoding.",
+
+                    "text": "<img src=\"https://i.imgur.com/EYGXn9D.png\" width=\"25\" /> Login with Discord",
+                    "link": "/login"
+                }
+            }
+        },
+        "dashboard": {
+            "title": "Dashboard - PteroDash"
+        },
+        "discord": {
+            "invite_link": "https://discord.gg/x6s5ncQt"
+        },
+        "servers": {
+            "title": {
+                "list": "Servers - DevelopersSwitch",
+                "create": "Create Server - PteroDash",
+                "modify": "Modify Server - PteroDash"
+            }
+        },
+        "earn": {
+            "title": {
+                "earn": "Earn - PteroDash",
+                "join": "Join For Resources - DevelopersSwitch",
+                "redeem": "Redeem Coupon - PteroDash"
+            }
+        },
+        "error": {
+            "title": "404 - PteroDash"
+        },
+        "admin": {
+            "title": {
+                "default": "Admin - PteroDash"
+            }
+        },
+        "store": {
+            "title": "Store - PteroDash"
+        },
+        "arcio": {
+            "title": "AFK Page - PteroDash"
+        },
+        "maintenance": {
+            "title": "Maintenance - PteroDash",
+            "unverified": "Not Verified | PteroDash",
+            "support_channel_link": "https://discord.com/channels/1048554829104025670/1063037420603453522"
+            
+        },
+        "redeem": {
+            "title": "Redeem - PteroDash"
+        },
+        "359c0d867a1a3f5015db5accecf056a6.txt": {
+            "title": "faq - PteroDash"
+        },
+        "faq": {
+            "title": "faq - PteroDash"
+        },
+        "join": {
+            "title": "J4R - PteroDash"
+        }
+    }
+}

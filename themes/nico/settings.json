@@ -1,0 +1,277 @@
+{
+  "version": "0.4.5",
+  "defaulttheme": "SuckNodesactyl",
+  "website": {
+    "port": 6969,
+    "secret": "6LcJcjwUAAAAALOcDJqAEYKTDhwELCkzUkNDQ0J5"
+  },
+  "pterodactyl": {
+    "domain": "https://gp.sucknodes.tech",
+    "key": "7ekHnfvMDjzizlg6lQGFpb6bQAkuwquY7BAn6qroGrT2asv9"
+  },
+  "database": "database.sqlite",
+  "api": {
+    "client": {
+      "api": {
+        "enabled": true,
+        "code": "hGnnOsoTKKdRaKAvjm4ZI3O0INYkfGFKrKUb7oRhVquvD2lQ"
+      },
+      "j4r": {
+        "enabled": true,
+        "servers": ["936308124833427546","905747656045912064","753625389179600896"],
+        "every": {
+          "cpu": 30,
+          "ram": 1024,
+          "disk": 1500,
+          "servers": 1
+        },
+        "j4rads": [
+          {
+            "name": "SuckNodes Development",
+            "invite": ""
+          }
+        ]
+      },
+      "bot": {
+        "token": "OTQwNDk2NTE1ODYzMDM1OTI0.YgIPog.ja5fqscSWb68qUM9RIWfsCdylYg",
+        "joinguild": {
+          "_comment": "The Discord bot must be in these servers and have invite permissions.",
+          "enabled": true,
+          "guildid": [
+            "884328091692986408"
+          ],
+          "forcejoin": true,
+          "registeredrole": null
+        }
+      },
+      "webhook": {
+        "_comment": "URL of the webhook to send messages to.",
+        "webhook_url": "https://discord.com/api/webhooks/939783907107303427/tPN8KSUtrfpRZQViAHliJ4yDumWe7yKnY7mprPK5vIYnrwrujZ6XP3UtjFJjzrSgwL90",
+        "auditlogs": {
+          "_comment": "This feature allows you to log actions, and get an overview of a users actions (only works if done with dashactyl, not ptero)",
+          "enabled": true,
+          "_comment2": "The types of notifications disabled. Values: ADMIN, LOGIN, SERVER, COUPONREDEEM",
+          "disabled": []
+        }
+      },
+      "passwordgenerator": {
+        "signup": false,
+        "length": 20
+      },
+      "allow": {
+        "newusers": true,
+        "regen": true,
+        "server": {
+          "create": true,
+          "modify": true,
+          "delete": true
+        },
+        "overresourcessuspend": false,
+        "renewsuspendsystem": {
+          "_comment": "This feature requires a restart in order to work. Also, this requires every server to start suspended, or else this feature would not work for some servers.",
+          "enabled": false,
+          "time": 259200,
+          "cost": 0
+        }
+      },
+      "oauth2": {
+        "_comment": "Go to https://discord.dev/ and create an application to set these up.",
+        "id": "938052508809568307",
+        "secret": "9boCo8NfPf-HwNc7hqU02QV5U-Jhz_Fx",
+        "link": "https://dash.sucknodes.tech",
+        "callbackpath": "/callback",
+        "prompt": true,
+        "ip": {
+          "trust x-forwarded-for": false,
+          "block": [
+            ""
+          ],
+          "_comment": "'duplicate check' is an anti-alt check by IPs.",
+          "duplicate check": false,
+          "_comment2": "'cookie alt check' is an anti-alt check by cookies.",
+          "cookie alt check": true
+        }
+      },
+      "ratelimits": {
+        "enabled": true,
+        "trust x-forwarded-for": true,
+        "requests": 30,
+        "per second": 60
+      },
+      "packages": {
+        "default": "default",
+        "list": {
+          "default": {
+            "ram": 0,
+            "disk": 0,
+            "cpu": 0,
+            "servers": 0
+          }
+        }
+      },
+      "locations": {
+        "1": {
+          "name": "Public",
+          "_comment": "Make 'package' be null to allow anyone with enough resources in their plan to create a server with this location. Also, make the 'package' variable an array, like [], with the location names with quotes to make a user be required to have a plan in order to use the package.",
+          "package": null
+        }
+      },
+      "eggs": {
+        "papermc": {
+          "display": "Mincraft Java",
+          "minimum": {
+            "ram": 10,
+            "disk": 10,
+            "cpu": 10
+          },
+          "maximum": {
+            "ram": null,
+            "disk": null,
+            "cpu": null
+          },
+          "info": {
+            "egg": 17,
+            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+            "skip_scripts": false,
+            "environment": {
+              "MINECRAFT_VERSION": "latest",
+              "SERVER_JARFILE": "server.jar",
+              "DL_PATH": null,
+              "BUILD_NUMBER": "latest"
+            },
+            "feature_limits": {
+              "databases": 1,
+              "backups": 1
+            }
+          }
+        },
+        "Bedrock": {
+          "display": "Mincraft Bedrock",
+          "minimum": {
+            "ram": 10,
+            "disk": 10,
+            "cpu": 10
+          },
+          "maximum": {
+            "ram": null,
+            "disk": null,
+            "cpu": null
+          },
+          "info": {
+            "egg": 16,
+            "docker_image": "ghcr.io/parkervcp/yolks:debian",
+            "startup": "./bedrock_server",
+            "skip_scripts": false,
+            "environment": {
+              "BEDROCK_VERSION": "latest",
+              "LD_LIBRARY_PATH": ".",
+              "SERVERNAME": "Bedrock Dedicated Server",
+              "GAMEMODE": "survival",
+              "DIFFICULTY": "easy",
+              "CHEATS": "false"
+            },
+            "feature_limits": {
+              "databases": 1,
+              "backups": 1
+            }
+          }
+        },
+        "PocketMine": {
+          "display": "Mincraft Bedrock PocketMine",
+          "minimum": {
+            "ram": 10,
+            "disk": 10,
+            "cpu": 10
+          },
+          "maximum": {
+            "ram": null,
+            "disk": null,
+            "cpu": null
+          },
+          "info": {
+            "egg": 19,
+            "docker_image": "ghcr.io/parkervcp/yolks:debian",
+            "startup": "./bin/php7/bin/php ./PocketMine-MP.phar --no-wizard --disable-ansi",
+            "skip_scripts": false,
+            "environment": {
+              "VERSION": "pm4"
+            },
+            "feature_limits": {
+              "databases": 1,
+              "backups": 1
+            }
+          }
+        },
+        "waterfall": {
+          "display": "Mincraft Java Proxy",
+          "minimum": {
+            "ram": 10,
+            "disk": 10,
+            "cpu": 10
+          },
+          "maximum": {
+            "ram": null,
+            "disk": null,
+            "cpu": null
+          },
+          "info": {
+            "egg": 18,
+            "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+            "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+            "skip_scripts": false,
+            "environment": {
+              "MINECRAFT_VERSION": "latest",
+              "SERVER_JARFILE": "waterfall.jar",
+              "DL_LINK": null,
+              "BUILD_NUMBER": "latest"
+            },
+            "feature_limits": {
+              "databases": 1,
+              "backups": 1
+            }
+          }
+        }
+      },
+      "coins": {
+        "enabled": true,
+        "store": {
+          "_comment": "The cost and per is not intended to used with 0. This is not intended to sell resources for coins. Make sure coins are enabled too, or else there can be errors.",
+          "enabled": true,
+          "ram": {
+            "cost": 1,
+            "per": 512
+          },
+          "disk": {
+            "cost": 1,
+            "per": 512
+          },
+          "cpu": {
+            "cost": 1,
+            "per": 30
+          },
+          "servers": {
+            "cost": 1,
+            "per": 3
+          }
+        }
+      }
+    },
+    "arcio": {
+      "_comment": "You can make an arc.io widget on https://arc.io. You can get money using arc.io.",
+      "enabled": true,
+      "widgetid": "qoaJHZDS",
+      "afk page": {
+        "_comment": "This will not effect any current arc.io sessions, and will require a restart to kick everyone out of the websocket sesison.",
+        "_comment2": "Make sure coins are enabled if you choose to enable this option!",
+        "enabled": true,
+        "_comment3": "If you change the path, you need to restart for it to take full effect.",
+        "path": "afkwspath",
+        "_comment4": "This afk page will give the users [coins variable] coins every [every variable] seconds.",
+        "every": 7200,
+        "_comment5": "The coins variable is meant to not be under 1. There may be bugs if the coins variable is less than 1.",
+        "coins": 1
+      }
+    }
+  }
+}
