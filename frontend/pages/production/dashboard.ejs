@@ -14,27 +14,12 @@
     <!-- Nucleo Icons -->
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    <link href="../assets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.0" rel="stylesheet" />
-    <script>
-        var isRTL = JSON.parse(localStorage.getItem('isRTL'));
-        if (isRTL) {
-            var linkDefault = document.getElementById('style-default');
-            var userLinkDefault = document.getElementById('user-style-default');
-            linkDefault.setAttribute('disabled', true);
-            userLinkDefault.setAttribute('disabled', true);
-            document.querySelector('html').setAttribute('dir', 'rtl');
-        } else {
-            var linkRTL = document.getElementById('style-rtl');
-            var userLinkRTL = document.getElementById('user-style-rtl');
-            linkRTL.setAttribute('disabled', true);
-            userLinkRTL.setAttribute('disabled', true);
-        }
-    </script>
 </head>
 
 <body class="g-sidenav-show bg-black-100 dark-version">
@@ -465,16 +450,6 @@
                                                                             const statusClass = node.status === "online" ? "text-success" : "text-danger";
                                                                             const newRow = document.createElement("tr");
                                                                             newRow.innerHTML = `
-                                                                    <td>
-                                                                        <div class="text-center">
-                                                                            <p class="text-xs font-weight-bold mb-0">
-                                                                                ID:
-                                                                            </p>
-                                                                            <h6 class="text-sm mb-0">
-                                                                                ${node.id}
-                                                                            </h6>
-                                                                        </div>
-                                                                    </td>
                                                                     <td class="w-30">
                                                                         <div
                                                                             class="d-flex px-2 py-1 align-items-center">
@@ -487,7 +462,7 @@
                                                                                     Name:</p>
                                                                                 <h6 class="text-sm mb-0">
                                                                                     ${node.name}
-                                                                                </h6>
+                                                                                </h6>  
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -750,22 +725,11 @@
         <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
         <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="../assets/js/argon-dashboard.min.js?v=2.0.0"></script>
+        <script>console.clear()</script>
 
 
-        <iframe src="chrome-extension://ijejnggjjphlenbhmjhhgcdpehhacaal/audio-devices.html" allow="microphone"
-            style="display: none;"></iframe><input type="file" id="" name="file" style="display: none;">
-        <div data-v-5f0b9ba1="" class="container_selected_area"
-            style="cursor: url(&quot;chrome-extension://ijejnggjjphlenbhmjhhgcdpehhacaal/assets/images/cursor-imagen.svg&quot;) 9 9, crosshair;">
-            <div data-v-5f0b9ba1="" class="area"></div>
-        </div>
 
 
-        <iframe src="chrome-extension://ijejnggjjphlenbhmjhhgcdpehhacaal/audio-devices.html" allow="microphone"
-            style="display: none;"></iframe><input type="file" id="" name="file" style="display: none;">
-        <div data-v-5f0b9ba1="" class="container_selected_area"
-            style="cursor: url(&quot;chrome-extension://ijejnggjjphlenbhmjhhgcdpehhacaal/assets/images/cursor-imagen.svg&quot;) 9 9, crosshair;">
-            <div data-v-5f0b9ba1="" class="area"></div>
-        </div>
 </body>
 
 </html>

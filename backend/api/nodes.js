@@ -30,20 +30,24 @@ module.exports.load = async function (app, db) {
     const nodesWithStatus = await Promise.all(
       sortedData.map(async (node) => {
         try {
-          const healthResponse = await fetch(
-            `https://${node.attributes.fqdn}:${node.attributes.daemon_listen}/health`,
-            {
-              method: "GET",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${newsettings.pterodactyl.key}`,
-              },
-            }
-          );
+          const healthResponse = await Promise.race([
+            fetch(
+              `https://${node.attributes.fqdn}:${node.attributes.daemon_listen}/health`,
+              {
+                method: "GET",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${newsettings.pterodactyl.key}`,
+                },
+              }
+            ),
+            new Promise((_, reject) => {
+              setTimeout(() => reject(new Error("Timeout")), 3000);
+            }),
+          ]);
           const healthData = await healthResponse.json();
           return {
-            id: node.attributes.id,
             name: node.attributes.name,
             locationId: node.attributes.location_id,
             fqdn: node.attributes.fqdn,
@@ -52,9 +56,7 @@ module.exports.load = async function (app, db) {
             status: healthData.status === "healthy" ? "YES" : "NO",
           };
         } catch (err) {
-          console.log(err);
           return {
-            id: node.attributes.id,
             name: node.attributes.name,
             locationId: node.attributes.location_id,
             fqdn: node.attributes.fqdn,
