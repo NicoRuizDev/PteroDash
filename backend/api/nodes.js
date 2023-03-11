@@ -49,9 +49,20 @@ module.exports.load = async function (app, db) {
             fqdn: node.attributes.fqdn,
             memory: node.attributes.memory,
             disk: node.attributes.disk,
-            status: healthData.status === "healthy" ? "NO" : "YES",
+            status: healthData.status === "healthy" ? "YES" : "NO",
           };
-        } catch (err) {}
+        } catch (err) {
+          console.log(err);
+          return {
+            id: node.attributes.id,
+            name: node.attributes.name,
+            locationId: node.attributes.location_id,
+            fqdn: node.attributes.fqdn,
+            memory: node.attributes.memory,
+            disk: node.attributes.disk,
+            status: "NO",
+          };
+        }
       })
     );
 
