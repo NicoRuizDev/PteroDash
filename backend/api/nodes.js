@@ -43,7 +43,7 @@ module.exports.load = async function (app, db) {
               }
             ),
             new Promise((_, reject) => {
-              setTimeout(() => reject(new Error("Timeout")), 3000);
+              setTimeout(() => reject(new Error("Timeout")), 1000);
             }),
           ]);
           const healthData = await healthResponse.json();
@@ -53,7 +53,7 @@ module.exports.load = async function (app, db) {
             fqdn: node.attributes.fqdn,
             memory: node.attributes.memory,
             disk: node.attributes.disk,
-            status: healthData.status === "healthy" ? "YES" : "NO",
+            status: healthData.status === "healthy" ? "NO" : "YES",
           };
         } catch (err) {
           return {
