@@ -206,7 +206,6 @@ app.use(async (req, res, next) => {
     "/modify": 1,
     "/updateinfo": 1,
     "/setplan": 2,
-    "/admin": 1,
     "/regen": 1,
     "/renew": 1,
     "/api/userinfo": 1,
