@@ -909,7 +909,7 @@ module.exports.load = async function (app, db) {
 
   async function four0four(req, res, theme) {
     ejs.renderFile(
-      `./frontend/pages/${theme.name}/${theme.settings.notfound}`,
+      `./themes/${theme.name}/${theme.settings.notfound}`,
       await eval(indexjs.renderdataeval),
       null,
       function (err, str) {
