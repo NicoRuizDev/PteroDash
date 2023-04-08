@@ -16,7 +16,7 @@
     <!-- Card Title -->
     <h3 style="margin-top: 0;">Gallery</h3>
     <!-- Card Image -->
-    <img src="https://github.com/NicoRuizDev/web-assets/blob/main/PteroDash/gallery2.gif" alt="Card Image - PC Version" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 5px;">
+    <img src="https://github.com/NicoRuizDev/web-assets/blob/main/PteroDash/gallery2.png" alt="Card Image - PC Version" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 5px;">
   </div>
   
 </div>
