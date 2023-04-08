@@ -1,0 +1,135 @@
+<!--   Core JS Files   -->
+<script src="/assets/js/core/popper.min.js"></script>
+<script src="/assets/js/core/bootstrap.min.js"></script>
+<script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="/assets/js/plugins/chartjs.min.js"></script>
+
+<script>
+    var win = navigator.platform.indexOf("Win") > -1;
+    if (win && document.querySelector("#sidenav-scrollbar")) {
+        var options = {
+            damping: "0.5",
+        };
+        Scrollbar.init(document.querySelector("#sidenav-scrollbar"), options);
+    }
+</script>
+<!-- Github buttons -->
+<script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="/assets/js/argon-dashboard.min.js?v=2.0.0"></script>
+<script>
+    const form = document.querySelector("#passwordForm");
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        // Get the password inputs
+        const newPassword = document.querySelector("#newPassword").value;
+        const newPasswordConfirmation = document.querySelector(
+            "#newPasswordConfirmation"
+        ).value;
+
+        if (newPassword == newPasswordConfirmation) {
+            // Send a request to change the password
+            const response = await fetch("/change-password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ newPassword, newPasswordConfirmation }),
+            });
+
+            // Handle the response
+            // const data = await response.json();
+            const responseData = await response.json();
+            const message = responseData.message;
+
+            if (message == "Password changed successfully") {
+                const passwordInput = document.querySelector("#example-password-input");
+                passwordInput.value = newPassword;
+                var modal = document.getElementById("modal-form");
+                var bootstrapModal = bootstrap.Modal.getInstance(modal);
+                bootstrapModal.hide();
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener("mouseenter", Swal.stopTimer);
+                        toast.addEventListener("mouseleave", Swal.resumeTimer);
+                    },
+                });
+                Toast.fire({
+                    icon: "success",
+                    title: "Password Updated successfully",
+                });
+            } else {
+                const regex = /\d+/;
+                const seconds = message.match(regex)[0];
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener("mouseenter", Swal.stopTimer);
+                        toast.addEventListener("mouseleave", Swal.resumeTimer);
+                    },
+                });
+                Toast.fire({
+                    icon: "error",
+                    title: `You must wait ${seconds} seconds`,
+                });
+            }
+        } else {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener("mouseenter", Swal.stopTimer);
+                    toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+            });
+            Toast.fire({
+                icon: "error",
+                title: "Password do not match.",
+            });
+        }
+    });
+    function copyToClipboard(str) {
+        // Create a temporary input element to store the string
+        var input = document.createElement("input");
+        input.setAttribute("value", str);
+        document.body.appendChild(input);
+
+        // Select the contents of the input element
+        input.select();
+
+        // Copy the contents of the input element to the clipboard
+        document.execCommand("copy");
+
+        // Remove the temporary input element
+        document.body.removeChild(input);
+    }
+    var togglePasswordVisibilityButton = document.querySelector(
+        "#toggle-password-visibility"
+    );
+    var passwordInput = document.querySelector("#example-password-input");
+    var resetPasswordButton = document.querySelector("#reset-password");
+
+    togglePasswordVisibilityButton.addEventListener("click", function (event) {
+        var type =
+            passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+        this.innerHTML =
+            type === "password"
+                ? '<i class="fas fa-eye-slash"></i>'
+                : '<i class="fas fa-eye"></i>';
+        event.stopPropagation();
+    });
+</script>

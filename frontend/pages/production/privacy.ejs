@@ -1,0 +1,194 @@
+<html lang="en">
+
+<head>
+    <title>
+        Privacy Policy - <%= extra.name %>
+    </title>
+    <%- include('./components/sources') %>
+
+</head>
+
+<body class="bg-black-100 dark-version">
+
+    <div id="login-section" class="container position-sticky z-index-sticky top-0">
+        <div class="row">
+            <div class="col-12">
+                <!-- Navbar -->
+                <nav
+                    class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
+                    <div class="container-fluid">
+                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-dark font-weight-bolder" href="/">
+                            <%= extra.name %>
+                        </a>
+                        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon mt-2">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navigation">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
+                                        href="/dashboard">
+                                        <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link me-2" href="/panel">
+                                        <i class="fa fa-gamepad opacity-6 text-dark me-1"></i>
+                                        Game Panel
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav d-lg-block d-none">
+                                <li class="nav-item">
+                                    <a href="<%= extra.discord.invite_link%>"
+                                        class="btn btn-sm mb-0 me-1 btn-primary">Discord</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+            </div>
+        </div>
+    </div>
+    <main class="main-content  mt-0">
+        <section>
+            <div class="container-fluid py-4">
+                <div class="row mt-4">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body p-4 p-sm-5">
+                                <p
+                                    class="lead text-center mt-4 text-800 font-sans-serif fw-semi-bold w-md-75 w-xl-100 mx-auto">
+                                    Privacy Policy</p>
+                                <hr>
+                                <p>Your privacy is important to us. This Privacy Policy explains how <%= extra.name %>
+                                        collects,
+                                        uses, and protects your
+                                        personal information when you use our website. By using our website, you
+                                        acknowledge
+                                        that you have read, understood,
+                                        and agreed to this Privacy Policy.</p>
+
+                                <h6>1. Collection of Personal Information</h6>
+                                <p>When you authenticate with Discord to use <%= extra.name %> website, we may collect
+                                        and store
+                                        certain personal information,
+                                        including your Discord username, email, and password (which is encrypted) for
+                                        the
+                                        purpose of authentication and user
+                                        account management. We may also collect other information such as your IP
+                                        address,
+                                        browser type, operating system,
+                                        and usage data through cookies or other tracking technologies.</p>
+
+                                <h6>2. Use of Personal Information</h6>
+                                <p>
+                                    <%= extra.name %> uses the personal information collected to provide and improve our
+                                        website,
+                                        authenticate user accounts,
+                                        communicate with users, and for other legitimate business purposes. We do not
+                                        sell
+                                        or rent your personal information
+                                        to third parties. However, we may share your personal information with trusted
+                                        third-party service providers who
+                                        assist us in operating our website, conducting business, or providing services
+                                        to
+                                        you, as long as they agree to keep
+                                        your information confidential.
+                                </p>
+
+                                <h6>3. Data Security</h6>
+                                <p>
+                                    <%= extra.name %> takes appropriate measures to protect the security and
+                                        confidentiality of
+                                        your personal information.
+                                        However, please note that no data transmission over the internet or storage
+                                        system
+                                        can be guaranteed to be 100%
+                                        secure. We cannot guarantee the security of any information you transmit to us
+                                        or
+                                        store on our website, and you do
+                                        so at your own risk. You are responsible for maintaining the confidentiality of
+                                        your
+                                        password and account
+                                        information.
+                                </p>
+
+                                <h6>4. Third-Party Links and Services</h6>
+                                <p>
+                                    <%= extra.name %> website may contain links to third-party websites or services that
+                                        are not
+                                        owned or controlled by us. We
+                                        are not responsible for the content, accuracy, privacy practices, or security of
+                                        such third-party websites or
+                                        services. Your use of third-party websites or services is at your own risk, and
+                                        you
+                                        should review their privacy
+                                        policies before using them.
+                                </p>
+
+                                <h6>5. Children's Privacy</h6>
+                                <p>
+                                    <%= extra.name %> website is not intended for use by children under the age of 13.
+                                        We do not
+                                        knowingly collect personal
+                                        information from children under the age of 13. If we become aware that we have
+                                        collected personal information from a
+                                        child under the age of 13, we will take appropriate steps to delete such
+                                        information
+                                        as soon as possible.
+                                </p>
+
+                                <h6>6. Changes to Privacy Policy</h6>
+                                <p>
+                                    <%= extra.name %> reserves the right to update or modify this Privacy Policy at any
+                                        time
+                                        without prior notice. It is your
+                                        responsibility to regularly review this Privacy Policy for any updates or
+                                        changes.
+                                        Your continued use of <%= extra.name %>
+                                            website after any modifications constitutes your acceptance of such
+                                            modifications.
+                                </p>
+
+                                <h6>7. Contact Us</h6>
+                                <p>If you have any questions or concerns regarding this Privacy Policy or the use of
+                                    <%= extra.name %> website, please contact
+                                        us at <a href="<%= extra.discord.invite_link%>">Discord</a>. We value your
+                                        privacy
+                                        and will strive to address any concerns
+                                        in a timely and appropriate
+                                        manner.
+                                </p>
+
+                                <h6>8. Conclusion</h6>
+                                <p>Thank you for using <%= extra.name %>! We are committed to protecting your personal
+                                        information and respecting your privacy. By
+                                        using our website, you agree to the <a href="/terms"> terms and conditions</a>
+                                        outlined in this Privacy
+                                        Policy. Please make sure to review
+                                        this Privacy Policy periodically for any changes. Last updated: 07/04/23.</p>
+                                <div class=" text-center">
+                                    <a class="btn btn-primary btn-sm mt-3" href="/">
+                                        <!-- <span class="fas fa-home me-2"></span> Font Awesome fontawesome.com -->
+                                        Go
+                                        Home</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+    <%- include('./components/scripts') %>
+</body>
+
+</html>

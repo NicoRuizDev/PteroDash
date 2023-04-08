@@ -1,24 +1,11 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="<%= extra.faviconlink %>">
   <title>
     Home - <%= extra.name %>
   </title>
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+  <%- include('./components/sources') %>
+
 </head>
 
 <body class="bg-black-100 dark-version">
@@ -45,14 +32,13 @@
               <div class="collapse navbar-collapse" id="navigation">
                 <ul class="navbar-nav mx-auto">
                   <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                      href="https://link-center.net/433195/<%= extra.name %>">
+                    <a class="nav-link d-flex align-items-center me-2 active" aria-current="page" href="/dashboard">
                       <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
                       Dashboard
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link me-2" href="https://console.<%= extra.name %>.tech">
+                    <a class="nav-link me-2" href="/panel" target="_blank">
                       <i class="fa fa-gamepad opacity-6 text-dark me-1"></i>
                       Game Panel
                     </a>
@@ -60,7 +46,8 @@
                 </ul>
                 <ul class="navbar-nav d-lg-block d-none">
                   <li class="nav-item">
-                    <a href="<%= extra.discord.invite_link%>" class="btn btn-sm mb-0 me-1 btn-primary">Discord</a>
+                    <a href="<%= extra.discord.invite_link%>" target="_blank" class=" btn btn-sm mb-0 me-1
+                      btn-primary">Discord</a>
                   </li>
                 </ul>
               </div>
@@ -74,8 +61,8 @@
       <section>
         <div class="page-header min-vh-100">
           <div class="container">
-            <div class="row">
-              <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+            <div class=" d-flex align-items-center justify-content-center row">
+              <div class=" col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                 <div class="card z-index-0">
                   <div class="text-center pt-4 ">
                     <h5>Sign In</h5>
@@ -84,69 +71,81 @@
 
                     <div class="mt-2 position-relative text-center">
                       <p class="mb-0">
-                        By clicking on "Login with discord", You agree to our Terms &amp; Conditions and Privacy Policy.
+                        By clicking on "Login with discord", You agree to our <a href="/terms">Terms</a> &amp;
+                        Conditions and <a href="/privacy">Privacy Policy</a>.
                       </p>
                     </div>
                   </div>
                   <div class="card-body">
                     <form role="form">
                       <div class="form-check form-check-info text-start">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="">
+                        <input class="form-check-input" type="checkbox" value="" id="agreeCheckbox">
                         <label class="form-check-label" for="flexCheckDefault">
-                          I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and
+                          I agree the <a href="/terms" target="_blank" class="text-dark font-weight-bolder">Terms and
                             Conditions</a>
                         </label>
                       </div>
                       <div class="text-center">
-                        <button type="button" class="btn btn-lg btn-primary btn-lg w-100 my-4 mb-2"
-                          onclick="window.location.href='/dashboard'"><i class="fab fa-discord" aria-hidden="true"></i>
-                          Login with Discord</button>
+                        <button type="button" id="dashboardButton"
+                          class="btn btn-lg btn-primary btn-lg w-100 my-4 mb-2 animated-button"
+                          onclick="redirectToDashboard()">
+                          <i class="fab fa-discord" aria-hidden="true"></i>
+                          Login with Discord
+                        </button>
                       </div>
                     </form>
-                  </div>
-                </div>
-                <div
-                  class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-                  <div
-                    class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-                    style="background-image: url('https://media.discordapp.net/attachments/909307813854052452/960806845382000670/ezgif-1-725bf1979f.png?width=910&height=480');
-          background-size: cover;">
-                    <span class="mask bg-gradient-primary opacity-6"></span>
-                    <h4 class="mt-5 text-white font-weight-bolder position-relative">"Attention is the new currency"
-                    </h4>
-                    <p class="text-white position-relative">The more effortless the writing looks, the more effort the
-                      writer actually put into the process.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </section>
     </main>
+    <script>
+      let state = true;
+      function redirectToDashboard() {
+        // Function to be executed when the dashboard button is clicked
+        if (!state) {
+          window.location.href = "/dashboard";
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: "error",
+            title: "User didn't accepted terms.",
+          });
+        }
+      }
 
+
+      document
+        .getElementById("agreeCheckbox")
+        .addEventListener("change", function () {
+          // Enable the dashboard button if the checkbox is checked, otherwise disable it
+          if (this.checked) {
+            state = false;
+          } else {
+            state = true;
+          }
+        });
+
+    </script>
     <% } else { %>
       <script>
         window.location.href = "/dashboard";
       </script>
       <% } %>
-        <!--   Core JS Files   -->
-        <script src="../assets/js/core/popper.min.js"></script>
-        <script src="../assets/js/core/bootstrap.min.js"></script>
-        <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-        <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-        <script>
-          var win = navigator.platform.indexOf('Win') > -1;
-          if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-              damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-          }
-        </script>
-        <!-- Github buttons -->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-        <script src="../assets/js/argon-dashboard.min.js?v=2.0.2"></script>
+        <%- include('./components/scripts') %>
 </body>
 
 </html>

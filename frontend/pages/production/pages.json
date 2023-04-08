@@ -44,7 +44,6 @@
         "removeaccountsuccess": "/admin"
     },
     "pages": {
-        "unverified": "unverified.ejs",
         "dashboard": "dashboard.ejs",
         "servers": "servers.ejs",
         "servers/new": "create.ejs",
@@ -54,9 +53,9 @@
         "earn": "earn.ejs",
         "redeem": "redeem.ejs",
         "join": "j4r.ejs",
-       "profile": "profile.ejs",
-       "359c0d867a1a3f5015db5accecf056a6.txt": "359c0d867a1a3f5015db5accecf056a6.txt"
-    },
+        "terms": "terms.ejs",
+        "privacy": "privacy.ejs"
+        },
     "mustbeloggedin": [
         "/dashboard",
         "/servers",
@@ -66,7 +65,6 @@
         "/earn",
         "/profile",
         "/redeem",
-        "https://discord.com/channels/1048554829104025670/1060058853980504094",
         "/join"
     ],
     "mustbeadmin": [
