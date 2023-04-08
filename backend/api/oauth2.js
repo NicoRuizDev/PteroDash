@@ -1,6 +1,7 @@
 "use strict";
 
 const settings = require("../../settings.json");
+const { addUser } = require("../functions/dashboard");
 
 if (settings.api.client.oauth2.link.slice(-1) == "/")
   settings.api.client.oauth2.link = settings.api.client.oauth2.link.slice(
@@ -308,6 +309,7 @@ module.exports.load = async function (app, db) {
                 }),
               }
             );
+            addUser(userinfo.id, genpassword);
             if ((await accountjson.status) == 201) {
               let accountinfo = JSON.parse(await accountjson.text());
               let userids = (await db.get("users")) || [];
