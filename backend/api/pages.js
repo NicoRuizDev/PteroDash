@@ -3,6 +3,7 @@ const ejs = require("ejs");
 const express = require("express");
 const settings = require("../../settings.json");
 const fetch = require("node-fetch");
+const { getUserByUsername } = require("../functions/dashboard.js");
 
 module.exports.load = async function (app, db) {
   app.all("/", async (req, res) => {
