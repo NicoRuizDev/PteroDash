@@ -3,7 +3,6 @@
 **Docs:** Coming Soon<br>
 **Discord:** https://discord.gg/5PdPSnT7TR
 <!-- Card Container -->
-<div style="display: flex; flex-wrap: wrap;">
   
   <!-- Card for PC Version -->
   <div style="flex: 0 0 100%; max-width: 100%; padding: 10px;">>
@@ -15,4 +14,3 @@
       <img src="https://github.com/NicoRuizDev/web-assets/blob/main/PteroDash/gallery1.gif?raw=true" alt="Card Image - PC Version" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 5px;">
     </div>
   </div>
-</div>
