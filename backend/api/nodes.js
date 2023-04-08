@@ -4,10 +4,17 @@ const fs = require("fs");
 const newsettings = require("../../settings.json");
 const path = require("path");
 const ejs = require("ejs");
+const cache = require("memory-cache");
 const fetch = require("node-fetch");
 
 module.exports.load = async function (app, db) {
   app.get("/api/nodes", async (req, res) => {
+    const cacheKey = "nodes";
+    const cachedData = cache.get(cacheKey);
+    if (cachedData) {
+      return res.json(cachedData);
+    }
+
     const response = await fetch(
       newsettings.pterodactyl.domain + "/api/application/nodes",
       {
@@ -68,7 +75,9 @@ module.exports.load = async function (app, db) {
       })
     );
 
-    // Render the EJS view and pass the sortedNodes data as a variable
-    res.send({ nodes: nodesWithStatus });
+    // Cache the response for 5 minutes
+    cache.put(cacheKey, { nodes: nodesWithStatus }, 60 * 60 * 1000);
+
+    return res.json({ nodes: nodesWithStatus });
   });
 };
