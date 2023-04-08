@@ -13,6 +13,7 @@ console.log(chalk.cyan("[PteroDash] Packages Loaded..."));
 console.log(chalk.yellow("[PteroDash] Loading settings..."));
 
 const settings = require("./settings.json");
+const { getUserByUsername } = require("./backend/functions/dashboard");
 
 console.log(chalk.cyan("[PteroDash] Settings Loaded!"));
 
@@ -35,6 +36,7 @@ module.exports.renderdataeval = `(async () => {
       req: req,
       settings: newsettings,
       userinfo: req.session.userinfo,
+      password: req.session.userinfo ? getUserByUsername(req.session.userinfo.id) : null,
       packagename: req.session.userinfo ? await db.get("package-" + req.session.userinfo.id) ? await db.get("package-" + req.session.userinfo.id) : newsettings.api.client.packages.default : null,
       extraresources: !req.session.userinfo ? null : (await db.get("extra-" + req.session.userinfo.id) ? await db.get("extra-" + req.session.userinfo.id) : {
         ram: 0,
@@ -72,7 +74,7 @@ module.exports.renderdataeval = `(async () => {
 // Load database
 console.log(chalk.yellow("[PteroDash] Loading database..."));
 
-const db = require("./backend/functions/db.js");
+const db = require("./backend/functions/database.js");
 
 module.exports.db = db;
 
