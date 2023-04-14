@@ -1,5 +1,5 @@
 # PteroDash - The one and only all-in-one Dashboard.
-## This project is still Under Development<br>
+## This project is still Under Development but still it's ready for production purpose<br>
 **Docs:** Coming Soon<br>
 **Discord:** https://discord.gg/5PdPSnT7TR
 <!-- Card Container -->
