@@ -328,6 +328,7 @@
                       let path = urlObj.pathname;
                       let query = data.split("?")[1] || "";
                       if (path == "/servers" && query == "") {
+                          window.location.href = "/servers"
                       } else {
                         if (
                           path == "/servers/new" &&
