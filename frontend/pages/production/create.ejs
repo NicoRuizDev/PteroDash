@@ -328,7 +328,7 @@
                       let path = urlObj.pathname;
                       let query = data.split("?")[1] || "";
                       if (path == "/servers" && query == "") {
-                          window.location.href = "/servers"
+                        window.location.href = "/servers";
                       } else {
                         if (
                           path == "/servers/new" &&
@@ -345,6 +345,159 @@
                           Toast.fire({
                             icon: "error",
                             title: "Server Creation is disabled",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=COULDNOTDECODENAME"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Special Characters aren't allowed in name.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=COULDNOTDECODENAME"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title:
+                              "Special Characters aren't allowed in Server Name.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=TOOMUCHSERVERS"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Maximum servers reached.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=LITTLESERVERNAME"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too SMALL server name.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=BIGSERVERNAME"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too LARGE server name.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=INVALIDLOCATION"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "The location is invalid.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=PREMIUMLOCATION"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "The location is premium.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=INVALIDEGG"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "The egg is invalid.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=EXCEEDRAM"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Ram Exceeded.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=EXCEEDRAM"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Ram Exceeded.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=EXCEEDDISK"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Disk Exceeded.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=EXCEEDCPU"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "CPU Exceeded.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=TOOLITTLERAM"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too little RAM.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=TOOLITTLEDISK"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too little Disk.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=TOOLITTLECPU"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too little CPU.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=TOOMUCHRAM"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too much RAM.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=TOOMUCHDISK"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too much Disk.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=TOOMUCHCPU"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Too much CPU.",
+                          });
+                        } else if (
+                          path == "/servers/new" &&
+                          query == "err=MISSINGVARIABLE"
+                        ) {
+                          Toast.fire({
+                            icon: "error",
+                            title: "Are you missing something??",
                           });
                         }
                       }
