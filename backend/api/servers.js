@@ -150,54 +150,30 @@ module.exports.load = async function (app, db) {
         let cpu = parseFloat(req.query.cpu);
         if (!isNaN(ram) && !isNaN(disk) && !isNaN(cpu)) {
           if (ram2 + ram > package.ram + extra.ram + j4r.ram)
-            return res.redirect(
-              `${redirectlink}?id=${req.query.id}&err=EXCEEDRAM&num=${
-                package.ram + extra.ram + j4r.ram - ram2
-              }`
-            );
+            return res.redirect(`${redirectlink}?err=EXCEEDRAM`);
           if (disk2 + disk > package.disk + extra.disk + j4r.disk)
-            return res.redirect(
-              `${redirectlink}?id=${req.query.id}&err=EXCEEDDISK&num=${
-                package.disk + extra.disk + j4r.disk - disk2
-              }`
-            );
+            return res.redirect(`${redirectlink}?err=EXCEEDDISK`);
           if (cpu2 + cpu > package.cpu + extra.cpu + j4r.cpu)
-            return res.redirect(
-              `${redirectlink}?id=${req.query.id}&err=EXCEEDCPU&num=${
-                package.cpu + extra.cpu + j4r.cpu - cpu2
-              }`
-            );
+            return res.redirect(`${redirectlink}?err=EXCEEDCPU`);
           if (egginfo.minimum.ram)
             if (ram < egginfo.minimum.ram)
-              return res.redirect(
-                `${redirectlink}?err=TOOLITTLERAM&num=${egginfo.minimum.ram}`
-              );
+              return res.redirect(`${redirectlink}?err=TOOLITTLERAM`);
           if (egginfo.minimum.disk)
             if (disk < egginfo.minimum.disk)
-              return res.redirect(
-                `${redirectlink}?err=TOOLITTLEDISK&num=${egginfo.minimum.disk}`
-              );
+              return res.redirect(`${redirectlink}?err=TOOLITTLEDISK`);
           if (egginfo.minimum.cpu)
             if (cpu < egginfo.minimum.cpu)
-              return res.redirect(
-                `${redirectlink}?err=TOOLITTLECPU&num=${egginfo.minimum.cpu}`
-              );
+              return res.redirect(`${redirectlink}?err=TOOLITTLECPU`);
           if (egginfo.maximum) {
             if (egginfo.maximum.ram)
               if (ram > egginfo.maximum.ram)
-                return res.redirect(
-                  `${redirectlink}?err=TOOMUCHRAM&num=${egginfo.maximum.ram}`
-                );
+                return res.redirect(`${redirectlink}?err=TOOMUCHRAM`);
             if (egginfo.maximum.disk)
               if (disk > egginfo.maximum.disk)
-                return res.redirect(
-                  `${redirectlink}?err=TOOMUCHDISK&num=${egginfo.maximum.disk}`
-                );
+                return res.redirect(`${redirectlink}?err=TOOMUCHDISK`);
             if (egginfo.maximum.cpu)
               if (cpu > egginfo.maximum.cpu)
-                return res.redirect(
-                  `${redirectlink}?err=TOOMUCHCPU&num=${egginfo.maximum.cpu}`
-                );
+                return res.redirect(`${redirectlink}?err=TOOMUCHCPU`);
           }
 
           let specs = egginfo.info;
